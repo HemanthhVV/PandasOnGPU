@@ -16,7 +16,7 @@ except:
 try:
   pynvml.nvmlInit()
 except:
-  raise Exception("Unfortunately you're in a Colab instance that doesn't have a GPU.Please make sure you've configured Colab to request a GPU Instance Type.Go to 'Runtime -> Change Runtime Type --> under the Hardware Accelerator, select GPU', then try again."
+  raise Exception("Unfortunately you're in a Notebook instance that doesn't have a GPU.Please make sure you've configured Notebook to request a GPU Instance Type.Go to 'Runtime -> Change Runtime Type --> under the Hardware Accelerator, select GPU', then try again."
   )
 gpu_name = pynvml.nvmlDeviceGetName(pynvml.nvmlDeviceGetHandleByIndex(0))
 gpu_name = gpu_name.decode()
@@ -65,7 +65,7 @@ else: # Pascal GPU Installation options (Not currently supported)
   print(f"Installing RAPIDS compatible with your Pascal GPU, a {gpu_name}, "+release[1])
 
 pkg = "rapids"
-print("Starting the RAPIDS install on Colab.  This will take about 15 minutes.")
+print("Starting the RAPIDS install on Notebook.  This will take about 15 minutes.")
 
 output = subprocess.Popen(["conda install -y --prefix /usr/local -c conda-forge mamba"], shell=True, stderr=subprocess.STDOUT, 
     stdout=subprocess.PIPE)
@@ -84,7 +84,7 @@ for line in io.TextIOWrapper(output.stdout, encoding="utf-8"):
     print(line.rstrip())
 
 
-print("RAPIDS conda installation complete.  Updating Colab's libraries...")
+print("RAPIDS conda installation complete.  Updating Notebook's libraries...")
 import sys, os, shutil
 sys.path.append('/usr/local/lib/python3.10/site-packages/')
 os.environ['NUMBAPRO_NVVM'] = '/usr/local/cuda/nvvm/lib64/libnvvm.so'
