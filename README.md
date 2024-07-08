@@ -5,8 +5,8 @@
 - To make pandas to run on GPU
 - Type the following commands in the notebook cell
   
-  ! git clone https://github.com/HemanthhVV/PandasOnGPU.git
-  ! python PandasOnGPU/colab/env-check.py
+  ! git clone https://github.com/HemanthhVV/PandasOnGPU.git__
+  ! python PandasOnGPU/colab/env-check.py__
   ! bash PandasOnGPU/colab/update_gcc.sh
   ! python PandasOnGPU/colab/install_rapids.py stable
 
