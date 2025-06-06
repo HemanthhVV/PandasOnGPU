@@ -19,7 +19,8 @@ except:
   raise Exception("Unfortunately you're in a Notebook instance that doesn't have a GPU.Please make sure you've configured Notebook to request a GPU Instance Type.Go to 'Runtime -> Change Runtime Type --> under the Hardware Accelerator, select GPU', then try again."
   )
 gpu_name = pynvml.nvmlDeviceGetName(pynvml.nvmlDeviceGetHandleByIndex(0))
-gpu_name = gpu_name.decode()
+print("GPU found ",gpu_name)
+# gpu_name = gpu_name.decode()
 
 if ('K80' not in gpu_name):
   print('***********************************************************************')
